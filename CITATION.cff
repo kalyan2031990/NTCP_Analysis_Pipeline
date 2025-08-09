@@ -7,7 +7,7 @@ authors:
   - family-names: "Mondal"
     given-names: "K."
 license: "MIT"
-repository-code: "https://github.com/USERNAME/NTCP_Analysis_Pipeline"
+repository-code: "https://github.com/USERNAME/NTCP_Analysis_KM"
 keywords:
   - NTCP
   - Radiotherapy
@@ -15,3 +15,4 @@ keywords:
   - LKB
   - Relative Seriality
   - Machine Learning
+
