@@ -1,0 +1,13 @@
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+env/
+venv/
+.DS_Store
+Thumbs.db
+processed_DVH/
+analysis_out/
+QA_results/
+clinical_factors_analysis/
+*.zip

@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "NTCP Analysis and Machine Learning Pipeline"
+version: "1.0.1"
+date-released: "2025-08-09"
+authors:
+  - family-names: "Mondal"
+    given-names: "K."
+license: "MIT"
+repository-code: "https://github.com/USERNAME/NTCP_Analysis_Pipeline"
+keywords:
+  - NTCP
+  - Radiotherapy
+  - DVH
+  - LKB
+  - Relative Seriality
+  - Machine Learning
