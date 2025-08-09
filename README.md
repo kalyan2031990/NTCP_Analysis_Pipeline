@@ -57,3 +57,6 @@ Mondal, K., et al. (2025). NTCP Analysis and Machine Learning Pipeline (v1.0.1) 
 > See **REVIEWERS.md** for a quick, step‑by‑step runbook.
 
 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16786956.svg)](https://doi.org/10.5281/zenodo.16786956)
+
