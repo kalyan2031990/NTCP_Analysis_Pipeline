@@ -8,6 +8,8 @@ authors:
     given-names: "K."
 license: "MIT"
 repository-code: "https://github.com/kalyan2031990/NTCP_Analysis_KM"
+doi: "10.5281/zenodo.16786956"
+url: "https://doi.org/10.5281/zenodo.16786956"
 keywords:
   - NTCP
   - Radiotherapy
