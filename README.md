@@ -1,62 +1,48 @@
-# NTCP Analysis and Machine Learning Pipeline
+﻿# NTCP Analysis Pipeline
 
-A five-stage Python pipeline for DVH processing, dose metrics and visualization, NTCP modeling (LKB/RS),
-machine-learning prediction (ANN/XGBoost), output QA checks, and clinical factor analyses.
-Designed for reproducible research and publication-quality outputs (600 dpi figures, tidy tables).
+Short description
+- Purpose: NTCP (Normal Tissue Complication Probability) analysis and ML pipeline for head & neck cancer. Includes uncertainty features and SHAP interpretability pipeline.
 
-**Maintainer:** K. Mondal  
-**Version:** v1.0.1  
-**License:** MIT
+Quickstart
+1. Clone:
+   git clone https://github.com/kalyan2031990/NTCP_Analysis_Pipeline.git
+   cd NTCP_Analysis_Pipeline
+2. Create a virtual environment:
+   python -m venv .venv
+   source .venv/bin/activate   # macOS / Linux
+   .venv\Scripts\activate      # Windows (PowerShell)
+3. Install:
+   pip install --upgrade pip
+   pip install -r requirements.txt
+4. Run tests:
+   pytest -q
+5. Run example pipeline:
+   python run_pipeline.py --config configs/example.yaml
 
-## Repository Contents
-- `code1_dvh_preprocess.py` — Parse TPS DVH text exports, standardize outputs; generates `cDVH_csv/` and `dDVH_csv/` plus workbook summary.
-- `code2_dvh_plot_and_summary.py` — Compute dose metrics and create cDVH/dDVH plots; writes cohort summary tables.
-- `code3_ntcp_analysis_ml.py` — Compute NTCP (LKB log-logit, LKB probit, RS) and train/evaluate ML models (ANN/XGBoost).
-- `code4_ntcp_output_QA_reporter.py` — QA the analysis outputs; flags inflated patient counts, unrealistic NTCPs, and overfitting/leakage symptoms; generates a DOCX report.
-- `code5_ntcp_factors_analysis.py` — Merge clinical factors with NTCP outputs; perform categorical/continuous analyses and plots.
+Repository layout (recommended)
+- ntcp_analysis/                  â€” Python package (refactor large scripts here)
+- scripts/                   â€” CLI wrappers and convenience scripts
+- tests/                     â€” Tests (pytest)
+- docs/                      â€” Documentation and examples
+- requirements.txt           â€” pinned deps for quick install
+- CITATION.cff               â€” citation file
+- LICENSE                    â€” license text
 
-## Install
-```bash
-python -m venv .venv
-# Windows: .venv\Scripts\activate
-# Linux/Mac: source .venv/bin/activate
-pip install -r requirements.txt
-```
+Maintenance & CI
+- Tests run via GitHub Actions (.github/workflows/ci.yml)
+- Style & linting: black, ruff (see pyproject.toml)
 
-## Quick Start
-1) Preprocess DVH
-```bash
-python code1_dvh_preprocess.py --src ./raw_DVH --dst ./processed_DVH
-```
-2) Dose metrics & plots
-```bash
-python code2_dvh_plot_and_summary.py --cdvh_dir ./processed_DVH/cDVH_csv --outdir ./analysis_out
-```
-3) NTCP + ML analysis
-```bash
-python code3_ntcp_analysis_ml.py --dDVH_dir ./processed_DVH/dDVH_csv --clinical_xlsx ./clinical_input.xlsx --outdir ./analysis_out
-```
-4) QA of outputs
-```bash
-python code4_ntcp_output_QA_reporter.py --input ./analysis_out --report_outdir ./QA_results
-```
-5) Clinical factors analysis
-```bash
-python code5_ntcp_factors_analysis.py --input_file ./clinical_input.xlsx --enhanced_output_dir ./analysis_out
-```
+Contributing
+- Please read CONTRIBUTING.md for workflow, tests, and code style.
+- Use a topic branch and open a PR against main.
 
-## Citation (recommend Zenodo DOI)
-Archive a GitHub release with Zenodo and cite the DOI in your manuscript.
-```
-Mondal, K., et al. (2025). NTCP Analysis and Machine Learning Pipeline (v1.0.1) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.xxxxxxx
-```
+Privacy & data
+- Clinical datasets must be fully de-identified and shared only under appropriate approvals. See PRIVACY_CHECKLIST.md and CODE_AVAILABILITY.md in the repository for details.
 
+License & citation
+- This repository is distributed under the terms in the LICENSE file.
+- Cite this work using CITATION.cff.
 
-> **Private Pre‑Submission Build (for editors/reviewers)**  
-> This repository is kept **private** until manuscript acceptance. Please do not redistribute.
-> See **REVIEWERS.md** for a quick, step‑by‑step runbook.
-
-
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16786956.svg)](https://doi.org/10.5281/zenodo.16786956)
-
+Contact / Maintainers
+- Maintained by: kalyan2031990
+- Open an issue to request features or report bugs.
