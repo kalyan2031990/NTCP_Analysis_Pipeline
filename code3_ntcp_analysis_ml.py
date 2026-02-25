@@ -344,7 +344,9 @@ class NTCPCalculator:
             
             # Calculate voxel-level NTCP for each dose bin
             dose_ratios = doses / D50
-            voxel_ntcps = 2.0 ** (-np.exp(gamma * (1.0 - dose_ratios)))
+            # Källman et al. relative seriality model with Euler's number factor:
+            # p_i = 2^{-exp(e * gamma * (1 - r_i))}, where r_i = D_i / D50
+            voxel_ntcps = 2.0 ** (-np.exp(np.e * gamma * (1.0 - dose_ratios)))
             
             # Handle numerical issues
             voxel_ntcps = np.clip(voxel_ntcps, 1e-15, 1.0 - 1e-15)
@@ -2245,7 +2247,19 @@ def load_patient_data(patient_data_file):
     """Load patient data with outcomes"""
     try:
         if patient_data_file.endswith('.xlsx') or patient_data_file.endswith('.xls'):
-            patient_df = pd.read_excel(patient_data_file)
+            # Load all sheets and add Organ column from sheet name when missing
+            excel_file = pd.ExcelFile(patient_data_file)
+            all_sheets = []
+            for sheet_name in excel_file.sheet_names:
+                sheet_df = pd.read_excel(excel_file, sheet_name=sheet_name)
+                
+                # If Organ column is not present, infer it from the sheet name
+                if 'Organ' not in sheet_df.columns:
+                    sheet_df['Organ'] = sheet_name
+                
+                all_sheets.append(sheet_df)
+            
+            patient_df = pd.concat(all_sheets, ignore_index=True)
         else:
             patient_df = pd.read_csv(patient_data_file)
         

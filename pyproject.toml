@@ -1,10 +1,10 @@
-﻿[build-system]
+[build-system]
 requires = [""setuptools>=61.0"", ""wheel""]
 build-backend = ""setuptools.build_meta""
 
 [project]
 name = ""ntcp_analysis""
-version = ""0.1.0""
+version = ""1.0.1""
 description = ""NTCP analysis and ML pipeline for head & neck cancer""
 authors = [{name = ""kalyan2031990""}]
 readme = ""README.md""
